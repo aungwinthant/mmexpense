@@ -3,9 +3,9 @@
 @include('layouts.navbar')
 
 @section('content')
-<div class="container">
+<div class="auth-body">
     <div class="row justify-content-center">
-        <div class="col-md-8">
+        <div class="col-md-6">
             <div class="card">
                 <div class="card-header">{{ __('Login') }}</div>
 
@@ -59,7 +59,7 @@
                                     {{ __('Login') }}
                                 </button>
 
-                                <a class="btn btn-link text-white" href="{{ route('password.request') }}">
+                                <a class="btn btn-link" href="{{ route('password.request') }}">
                                     {{ __('Forgot Your Password?') }}
                                 </a>
                             </div>
