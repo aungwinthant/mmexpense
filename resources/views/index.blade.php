@@ -1,9 +1,10 @@
 @extends('layouts.app')
 
-@include('layouts.navbar')
 
 
 @section('content')
+@include('layouts.navbar')
+
         <div class="container">
             <div class="row"> 
             @if (is_array($data))
