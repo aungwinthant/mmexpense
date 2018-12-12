@@ -14,8 +14,8 @@
                             <div class="card" >
                                     <div class="card-header">
                                         
-                                        <img src={{ asset("images/".$info["logo"]) }} width=75px height=75px>
-                                        <span class="card-header-text">{{$info["title"]}}</span>
+                                        <img src={{ asset("images/".$info["logo"]) }} width=110px height=100px>
+                                        {{-- <span class="card-header-text">{{$info["title"]}}</span> --}}
                                     </div>
                                     <div class="card-body">
                                         <table class="table table-striped">

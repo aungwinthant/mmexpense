@@ -7,6 +7,7 @@ class Helper{
     protected $data=[];
     protected $aya_url="https://www.ayabank.com/en_US";
     protected $centralbank_url="http://forex.cbm.gov.mm/api/latest";
+    protected $cb_url="https://www.cbbank.com.mm/exchange_rate.aspx";
 
     private function get_aya_data($url){
             $doc = new \DOMDocument();
@@ -21,9 +22,7 @@ class Helper{
             $table = $xpath->query("//*[contains(concat(' ', normalize-space(@class), ' '), ' tablepress-id-1')]")->item(0);
         
             $rows = $table->getElementsByTagName('tr');
-        
-            $date_cell = $rows[0] -> getElementsByTagName('td');
-        
+                
             $currency_cell = $rows[1]-> getElementsByTagName('td');
                 
             $currency_buy = $currency_cell[1]->nodeValue;
@@ -38,6 +37,7 @@ class Helper{
                 "sell"=>$currency_sell
             ];
     }
+    //central bank provide developer api 
     private function get_centralbank_data($url){
         // create curl resource 
         $ch = curl_init(); 
@@ -69,13 +69,41 @@ class Helper{
             "sell"  => $data['rates']["USD"]
         ];
     }
+    private function get_cb_data($url){
+        $doc = new \DOMDocument();
+            //clear special tag error such as header,nav etc
+            libxml_use_internal_errors(true);
+        
+            $doc->loadHTMLFile($url);
+            
+            $xpath = new \DOMXPath($doc);
+            
+            //clear white spaces in class name
+            $table = $xpath->query("//table")->item(0);
+       
+            $rows = $table->getElementsByTagName('tr');
+                
+            $currency_cell = $rows[1]-> getElementsByTagName('td');
+                
+            $currency_buy = $currency_cell[1]->nodeValue;
+            
+            $currency_sell = $currency_cell[2]->nodeValue;
+
+            return [
+                "title"=>"CB Bank",
+                "logo" =>"cb_logo.png",
+                "date"=>date("d-m-Y"),
+                "buy" =>$currency_buy,
+                "sell"=>$currency_sell
+            ];
+    }
     private function get_kbz_data($url){
         
     }
     public function get_currency_data(){
-        $this->data['aya']= $this->get_aya_data($this->aya_url);
         $this->data['cbm'] = $this->get_centralbank_data($this->centralbank_url);
-
+        $this->data['aya']= $this->get_aya_data($this->aya_url);
+        $this->data['cb'] = $this->get_cb_data($this->cb_url);
         return $this->data;
     }
    
