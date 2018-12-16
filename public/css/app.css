@@ -10632,8 +10632,15 @@ body.fixed-nav.sidebar-toggled #content-wrapper {
   list-style: none;
 }
 
+@media (min-width: 100px) {
+  .sidebar {
+    display: none;
+  }
+}
+
 @media (min-width: 768px) {
   .sidebar {
+    display: block;
     width: 300px !important;
   }
 
@@ -10800,6 +10807,32 @@ body.fixed-nav.sidebar-toggled #content-wrapper {
   padding-bottom: calc(var(--input-padding-y) / 3);
   font-size: 12px;
   color: #777;
+}
+
+.fab {
+  width: 70px;
+  height: 70px;
+  background-color: #2bbbad;
+  border-radius: 50%;
+  -webkit-box-shadow: 0 6px 10px 0 #666;
+          box-shadow: 0 6px 10px 0 #666;
+  -webkit-transition: all 0.1s ease-in-out;
+  transition: all 0.1s ease-in-out;
+  font-size: 50px;
+  color: white;
+  text-align: center;
+  line-height: 70px;
+  position: fixed;
+  right: 30px;
+  bottom: 50px;
+  cursor: pointer;
+}
+
+.fab:hover {
+  -webkit-box-shadow: 0 6px 14px 0 #666;
+          box-shadow: 0 6px 14px 0 #666;
+  -webkit-transform: scale(1.05);
+          transform: scale(1.05);
 }
 
 .navbar-laravel {

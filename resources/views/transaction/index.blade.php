@@ -1,7 +1,6 @@
 @extends('layouts.app')
 
 
-
 @section('content')
 
 @include('layouts.navbar')
@@ -34,59 +33,51 @@
         <div id="content-wrapper">
   
           <div class="container-fluid">
-  
-          
-            <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModalCenter">
-              Add Transaction
-            </button>
-
             
-            
+            <div class="fab" data-toggle="modal" data-target="#exampleModalCenter"> + </div>
             <!-- Modal -->
             <div class="modal fade" id="exampleModalCenter" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
               <div class="modal-dialog modal-dialog-centered" role="document">
                 <div class="modal-content">
                   <div class="modal-header">
-                    <h5 class="modal-title">Add Transaction</h5>
+                    <h5 class="modal-title  w-100 font-weight-bold">Add Transaction</h5>
                     <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                       <span aria-hidden="true">&times;</span>
                     </button>
                   </div>
                   <div class="modal-body">
-                      <form>
-                          <div class="form-group">
-                              <div class="form-group">
-                                  <label for="inputState">Category</label>
-                                  <select id="inputState" class="form-control">
-                                    <option selected>Choose...</option>
-                                    <option>...</option>
-                                  </select>
-                                </div>
-                            <label for="title">Title</label>
-                            <input type="text" class="form-control" id="title" name = "title" placeholder="Add Title">
+                      <form class="text-center border border-light p-5">
+                          <div class="form-group md-form">
+                              <input type="number" min="0" class="form-control" id="amount" placeholder="Amount">
                           </div>
                           <div class="form-group">
-                            <label for="amount">Amount</label>
-                            <input type="number" min="0" class="form-control" id="amount">
+                            <select id="inputState" class="form-control category-select" name="state">
+                              <option selected>Category</option>
+                              <option>...</option>
+                            </select>
                           </div>
-                          <div class="form-check">
-                              <input class="form-check-input" type="radio" name="option" id="income" value="income">
-                              <label class="form-check-label" for="income">
-                                Income
-                              </label>
-                            </div>
-                            <div class="form-check">
-                              <input class="form-check-input" type="radio" name="option" id="expense" value="expense">
-                              <label class="form-check-label" for="expense">
-                                Expense
-                              </label>
-                            </div>
-                          <button type="submit" class="btn btn-primary">Submit</button>
+                          <div class="form-group md-form">
+                            <input type="text" class="form-control" id="title" name = "title" placeholder="Description">
+                          </div>
+                          
+                          <div class="custom-control custom-radio custom-control-inline">
+                              <input type="radio" class="custom-control-input" id="expense" name="inlineDefaultRadiosExample">
+                              <label class="custom-control-label" for="expense">Expense</label>
+                          </div>
+                            
+                            <!-- Default inline 2-->
+                          <div class="custom-control custom-radio custom-control-inline">
+                            <input type="radio" class="custom-control-input" id="income" name="inlineDefaultRadiosExample">
+                            <label class="custom-control-label" for="income">Income</label>
+                          </div>
+                          <hr>
+                          <div class="text-center">
+                            <button type="button" class="btn btn-default">Save changes</button>
+                          </div>
                         </form>
                   </div>
-                  <div class="modal-footer">
-                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-                    <button type="button" class="btn btn-primary">Save changes</button>
+        
+                    
                   </div>
                 </div>
               </div>
@@ -100,4 +91,15 @@
   
       </div>
 
+@endsection
+
+@section('scripts')
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.6-rc.0/js/select2.min.js"></script>
+<script>
+    $(document).ready(function() {
+        $('.category-select').select2();
+    });
+</script>
+    
 @endsection
