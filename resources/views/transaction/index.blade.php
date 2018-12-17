@@ -36,20 +36,14 @@
           <div class="container-fluid">
             <div class="content">
               <div class="col col-md-12">
-                <div class="list-group">
-                  @if (!is_null($transactions))
-                    @foreach ($transactions as $transaction)
-                      <a href="#!" class="list-group-item d-flex justify-content-between align-items-center list-group-item-action">{{$transaction->category->name}}<span class="badge badge-danger badge-pill">{{$transaction->amount}}</span></a>
-                    @endforeach
-                    <a href="#!" class="list-group-item d-flex justify-content-between align-items-center list-group-item-action">{{$transaction->category->name}}<span class="badge badge-danger badge-pill">{{$transaction->amount}}</span></a>
-                 @else
-                     <div class="alert alert-info">
-                       you have no transactions!
-                     </div>
-                 @endif
-                 
-                    
-                </div>
+                  <div class="list-group">
+                      @forelse ($transactions as $transaction)
+                        <a href="#!" class="list-group-item d-flex justify-content-between align-items-center list-group-item-action">{{$transaction->category->name}}<span class="badge badge-danger badge-pill">{{$transaction->amount}}</span></a>
+                      @empty
+                          <p class="alert alert-info text-center">You have no records yet!</p>
+                      @endforelse
+                  </div>
+                  
               </div>
             </div>
             <div class="fab" data-toggle="modal" data-target="#exampleModalCenter"> + </div>
