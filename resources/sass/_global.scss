@@ -16,9 +16,12 @@ body {
   #content-wrapper {
     overflow-x: hidden;
     width: 100%;
-    padding-top: 1rem;
     padding-bottom: $sticky-footer-height;
   }
+}
+.content{
+  width: 700px;
+  margin:0 auto;
 }
 // Fixed Nav Option
 body.fixed-nav {
@@ -48,4 +51,30 @@ body.fixed-nav {
   background: #eff3f6;
   height:100%;
   padding-top: 10px;
+}
+.date{
+  margin: 0;
+  padding: 0;
+  text-align: center;
+  background: #f7efcb;
+
+  #datetext{
+    color:$cyan;
+    padding:0.5rem;
+  }
+}
+
+.list-group-item{
+  font-size: 22px;
+  margin-bottom: 5px;
+  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+  .badge{
+    font-size: 22px;
+  }
+}
+
+// category section
+.category-container{
+  width: 700px;
+  margin:0 auto;
 }

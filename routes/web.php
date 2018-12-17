@@ -17,8 +17,6 @@ Route::get('/', 'CurrencyExchangeController@index');
 
 Auth::routes();
 
-Route::get('/home', 'TransactionController@index')->name('home');
+Route::resource('category','CategoryController');
 
-Route::get('/transactions','TransactionController@index');
-
-
+Route::resource('transactions','TransactionController');

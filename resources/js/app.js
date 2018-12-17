@@ -15,6 +15,9 @@ window.Vue = require('vue');
  * or customize the JavaScript scaffolding to fit your unique needs.
  */
 
+ var date=new Date();
+ document.getElementById('datetext').innerHTML=date.toDateString();
+
 Vue.component('example-component', require('./components/ExampleComponent.vue'));
 
 const app = new Vue({

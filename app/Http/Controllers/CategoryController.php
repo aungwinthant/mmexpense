@@ -3,27 +3,20 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
-use App\Transaction;
 use App\Category;
-use Carbon\Carbon;
 
-class TransactionController extends Controller
+class CategoryController extends Controller
 {
-    public function __construct()
-    {
-        $this->middleware('auth');
-    }
     /**
      * Display a listing of the resource.
      *
      * @return \Illuminate\Http\Response
      */
-    public function index(Request $request)
+    public function index()
     {
-        //
         $categories=Category::get();
-        $transactions= $request->user()->transactions()->whereDate('created_at',Carbon::today())->get();
-        return view('transaction.index',compact('transactions','categories'));
+        return view('category.index',compact('categories'));
+        //
     }
 
     /**
@@ -33,7 +26,6 @@ class TransactionController extends Controller
      */
     public function create()
     {
-        
         //
     }
 
@@ -45,23 +37,16 @@ class TransactionController extends Controller
      */
     public function store(Request $request)
     {
-        $validate_data=$this->validate($request,[
-            'amount' => 'required|numeric',
-            'category_id'=> 'required|numeric',
+        $validated_data=$this->validate($request,[
+            'name' => 'required|min:3|max:255',
             'description' => 'required|max:255'
         ]);
-        if(request('income')){
-            $validate_data['type']=1;
-        }
-        elseif(request('expense')){
-            $validate_data['type']=2;
-        }
-        $transaction = $request->user()->transactions()->create(
-            $validate_data
-        );
-        
-        
-        return redirect('/transactions');
+
+        $category = Category::create($validated_data);
+
+        $request->session()->flash('status', 'Successfully Added');
+
+        return redirect('/category');
         //
     }
 

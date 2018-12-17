@@ -13884,9 +13884,8 @@ module.exports = __webpack_require__(43);
 
 /***/ }),
 /* 12 */
-/***/ (function(module, __webpack_exports__, __webpack_require__) {
+/***/ (function(module, exports, __webpack_require__) {
 
-"use strict";
 
 /**
  * First we will load all of this project's JavaScript dependencies which
@@ -13904,6 +13903,9 @@ window.Vue = __webpack_require__(36);
  * or customize the JavaScript scaffolding to fit your unique needs.
  */
 
+var date = new Date();
+document.getElementById('datetext').innerHTML = date.toDateString();
+
 Vue.component('example-component', __webpack_require__(39));
 
 var app = new Vue({
@@ -13914,7 +13916,7 @@ var app = new Vue({
 /* 13 */
 /***/ (function(module, exports, __webpack_require__) {
 
-
+/* WEBPACK VAR INJECTION */(function(__webpack_provided_window_dot_jQuery) {
 window._ = __webpack_require__(14);
 window.Popper = __webpack_require__(4).default;
 
@@ -13925,7 +13927,7 @@ window.Popper = __webpack_require__(4).default;
  */
 
 try {
-  window.$ = window.jQuery = __webpack_require__(2);
+  window.$ = __webpack_provided_window_dot_jQuery = __webpack_require__(2);
 
   __webpack_require__(16);
 } catch (e) {}
@@ -13970,6 +13972,7 @@ if (token) {
 //     cluster: process.env.MIX_PUSHER_APP_CLUSTER,
 //     encrypted: true
 // });
+/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(2)))
 
 /***/ }),
 /* 14 */

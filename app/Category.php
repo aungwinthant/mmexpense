@@ -6,6 +6,10 @@ use Illuminate\Database\Eloquent\Model;
 
 class Category extends Model
 {
-    protected $fillable = ['name','decription'];
+    protected $fillable = ['name','description'];
+
+    public function transaction(){
+        return $this->hasMany('App\Transaction');
+    }
     //
 }

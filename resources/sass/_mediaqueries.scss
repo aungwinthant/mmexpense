@@ -1,0 +1,45 @@
+@media(min-width:100px){
+    .sidebar{
+      display:none;
+    }
+    .content{
+        width:100%;
+    }
+  }
+  
+  @media (min-width: 768px) {
+    .sidebar {
+      display: block;
+      width: $sidebar-base-width !important;
+  
+      .nav-item {
+        .nav-link {
+          display: block;
+          width: 100%;
+          text-align: left;
+          padding: 1rem;
+          span {
+            font-size: 1rem;
+            display: inline;
+          }
+        }
+        .dropdown-menu {
+          position: static !important;
+          margin: 0 1rem;
+          // Position fix for Firefox
+          top: 0;
+        }
+        &.dropdown .dropdown-toggle::after {
+          display: block;
+        }
+      }
+      &.toggled {
+        overflow: visible;
+        width: $sidebar-collapsed-width !important;
+        @include sidebar-icons;
+      }
+    }
+    .content{
+        width:700px;
+    }
+  }

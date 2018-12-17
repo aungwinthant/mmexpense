@@ -10484,8 +10484,12 @@ body {
 #wrapper #content-wrapper {
   overflow-x: hidden;
   width: 100%;
-  padding-top: 1rem;
   padding-bottom: 80px;
+}
+
+.content {
+  width: 700px;
+  margin: 0 auto;
 }
 
 body.fixed-nav #content-wrapper {
@@ -10511,6 +10515,34 @@ body.fixed-nav.sidebar-toggled #content-wrapper {
   background: #eff3f6;
   height: 100%;
   padding-top: 10px;
+}
+
+.date {
+  margin: 0;
+  padding: 0;
+  text-align: center;
+  background: #f7efcb;
+}
+
+.date #datetext {
+  color: #17a2b8;
+  padding: 0.5rem;
+}
+
+.list-group-item {
+  font-size: 22px;
+  margin-bottom: 5px;
+  -webkit-box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+          box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+}
+
+.list-group-item .badge {
+  font-size: 22px;
+}
+
+.category-container {
+  width: 700px;
+  margin: 0 auto;
 }
 
 .smaller {
@@ -10630,78 +10662,6 @@ body.fixed-nav.sidebar-toggled #content-wrapper {
 
 .sidebar ul {
   list-style: none;
-}
-
-@media (min-width: 100px) {
-  .sidebar {
-    display: none;
-  }
-}
-
-@media (min-width: 768px) {
-  .sidebar {
-    display: block;
-    width: 300px !important;
-  }
-
-  .sidebar .nav-item .nav-link {
-    display: block;
-    width: 100%;
-    text-align: left;
-    padding: 1rem;
-  }
-
-  .sidebar .nav-item .nav-link span {
-    font-size: 1rem;
-    display: inline;
-  }
-
-  .sidebar .nav-item .dropdown-menu {
-    position: static !important;
-    margin: 0 1rem;
-    top: 0;
-  }
-
-  .sidebar .nav-item.dropdown .dropdown-toggle::after {
-    display: block;
-  }
-
-  .sidebar.toggled {
-    overflow: visible;
-    width: 90px !important;
-  }
-
-  .sidebar.toggled .nav-item:last-child {
-    margin-bottom: 1rem;
-  }
-
-  .sidebar.toggled .nav-item .nav-link {
-    text-align: center;
-    padding: 0.75rem 1rem;
-    width: 90px;
-  }
-
-  .sidebar.toggled .nav-item .nav-link span {
-    font-size: 0.65rem;
-    display: block;
-  }
-
-  .sidebar.toggled .nav-item .dropdown-menu {
-    position: absolute !important;
-    -webkit-transform: none !important;
-            transform: none !important;
-    left: calc(90px + 0.5rem) !important;
-    margin: 0;
-  }
-
-  .sidebar.toggled .nav-item .dropdown-menu.dropup {
-    bottom: 0;
-    top: auto !important;
-  }
-
-  .sidebar.toggled .nav-item.dropdown .dropdown-toggle::after {
-    display: none;
-  }
 }
 
 .sidebar.fixed-top {
@@ -10833,6 +10793,86 @@ body.fixed-nav.sidebar-toggled #content-wrapper {
           box-shadow: 0 6px 14px 0 #666;
   -webkit-transform: scale(1.05);
           transform: scale(1.05);
+}
+
+@media (min-width: 100px) {
+  .sidebar {
+    display: none;
+  }
+
+  .content {
+    width: 100%;
+  }
+}
+
+@media (min-width: 768px) {
+  .sidebar {
+    display: block;
+    width: 300px !important;
+  }
+
+  .sidebar .nav-item .nav-link {
+    display: block;
+    width: 100%;
+    text-align: left;
+    padding: 1rem;
+  }
+
+  .sidebar .nav-item .nav-link span {
+    font-size: 1rem;
+    display: inline;
+  }
+
+  .sidebar .nav-item .dropdown-menu {
+    position: static !important;
+    margin: 0 1rem;
+    top: 0;
+  }
+
+  .sidebar .nav-item.dropdown .dropdown-toggle::after {
+    display: block;
+  }
+
+  .sidebar.toggled {
+    overflow: visible;
+    width: 90px !important;
+  }
+
+  .sidebar.toggled .nav-item:last-child {
+    margin-bottom: 1rem;
+  }
+
+  .sidebar.toggled .nav-item .nav-link {
+    text-align: center;
+    padding: 0.75rem 1rem;
+    width: 90px;
+  }
+
+  .sidebar.toggled .nav-item .nav-link span {
+    font-size: 0.65rem;
+    display: block;
+  }
+
+  .sidebar.toggled .nav-item .dropdown-menu {
+    position: absolute !important;
+    -webkit-transform: none !important;
+            transform: none !important;
+    left: calc(90px + 0.5rem) !important;
+    margin: 0;
+  }
+
+  .sidebar.toggled .nav-item .dropdown-menu.dropup {
+    bottom: 0;
+    top: auto !important;
+  }
+
+  .sidebar.toggled .nav-item.dropdown .dropdown-toggle::after {
+    display: none;
+  }
+
+  .content {
+    width: 700px;
+  }
 }
 
 .navbar-laravel {
