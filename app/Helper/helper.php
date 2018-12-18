@@ -31,10 +31,11 @@ class Helper{
 
             return [
                 "title"=>"AYA Bank",
-                "logo" =>"aya_logo.png",
-                "date"=>date("d-m-Y"),
+                "currency" =>"USD",
                 "buy" =>$currency_buy,
-                "sell"=>$currency_sell
+                "sell"=>$currency_sell,
+                'created_at'=>date('Y-m-d H:i:s'),
+                'updated_at'=> date('Y-m-d H:i:s')
             ];
     }
     //central bank provide developer api 
@@ -60,13 +61,18 @@ class Helper{
 
         // close curl resource to free up system resources 
         curl_close($ch); 
+
+        $rate=str_replace(',','',$data['rates']["USD"]);
+
+        
         
         return [
             "title" => "Central Bank",
-            "logo"  => "cbm_logo.png",
-            "date"  => date("d-m-Y"),
-            "buy"   => $data['rates']["USD"],
-            "sell"  => $data['rates']["USD"]
+            "currency" =>"USD",
+            "buy"   => intval($rate),
+            "sell"  => intval($rate),
+            'created_at'=>date('Y-m-d H:i:s'),
+            'updated_at'=> date('Y-m-d H:i:s')
         ];
     }
     private function get_cb_data($url){
@@ -91,10 +97,11 @@ class Helper{
 
             return [
                 "title"=>"CB Bank",
-                "logo" =>"cb_logo.png",
-                "date"=>date("d-m-Y"),
+                "currency" =>"USD",
                 "buy" =>$currency_buy,
-                "sell"=>$currency_sell
+                "sell"=>$currency_sell,
+                'created_at'=>date('Y-m-d H:i:s'),
+                'updated_at'=> date('Y-m-d H:i:s')
             ];
     }
     private function get_kbz_data($url){

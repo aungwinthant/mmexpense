@@ -1,10 +1,11 @@
 <?php
 
 namespace App\Console;
+use Illuminate\Support\Facades\DB;
 
 use Illuminate\Console\Scheduling\Schedule;
 use Illuminate\Foundation\Console\Kernel as ConsoleKernel;
-
+use App\Helper\Helper;
 class Kernel extends ConsoleKernel
 {
     /**
@@ -24,8 +25,15 @@ class Kernel extends ConsoleKernel
      */
     protected function schedule(Schedule $schedule)
     {
+        $data = (new Helper())->get_currency_data();
+
+
         // $schedule->command('inspire')
         //          ->hourly();
+
+        $schedule->call(function(){
+            DB::table('currency_exchange')->insert($data);
+        })->daily();
     }
 
     /**

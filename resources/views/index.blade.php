@@ -7,14 +7,12 @@
 
         <div class="container">
             <div class="row"> 
-            @if (is_array($data))
-                @foreach ($data as $bank => $info)
-                   
+                @foreach ($exchange_rates as $bank)
                         <div class="col col-md-6">
                             <div class="card" >
                                     <div class="card-header">
                                         
-                                        <img src={{ asset("images/".$info["logo"]) }} width=110px height=100px>
+                                        {{$bank->title}}
                                         {{-- <span class="card-header-text">{{$info["title"]}}</span> --}}
                                     </div>
                                     <div class="card-body">
@@ -28,9 +26,9 @@
                                                         
                                                 </tr>
                                                 <tr>
-                                                    <td>{{ $info['date'] }}</td>
-                                                    <td>{{ $info['buy'] }}</td>
-                                                    <td>{{ $info['sell'] }}</td>
+                                                    <td>{{ date('d-m-Y', strtotime($bank->created_at)) }}</td>
+                                                    <td>{{ $bank->buy }}</td>
+                                                    <td>{{ $bank->sell }}</td>
                                                 </tr>
                                                 
                                             </tbody>
@@ -41,8 +39,8 @@
                                                        
                             </div>
                         
+                        
                         @endforeach
-                    @endif
                 </div>
             </div>
 @endsection

@@ -18,12 +18,12 @@
           </li>
           
           <li class="nav-item">
-            <a class="nav-link" href="charts.html">
+            <a class="nav-link" href="#">
               <i class="fas fa-fw fa-chart-area"></i>
               <span>Charts</span></a>
           </li>
           <li class="nav-item">
-            <a class="nav-link" href="tables.html">
+            <a class="nav-link" href="#">
               <i class="fas fa-fw fa-table"></i>
               <span>Tables</span></a>
           </li>
@@ -38,7 +38,10 @@
               <div class="col col-md-12">
                   <div class="list-group">
                       @forelse ($transactions as $transaction)
-                        <a href="#!" class="list-group-item d-flex justify-content-between align-items-center list-group-item-action">{{$transaction->category->name}}<span class="badge badge-danger badge-pill">{{$transaction->amount}}</span></a>
+                        <a href="#!" class="list-group-item d-flex justify-content-between align-items-center list-group-item-action">{{$transaction->category->name}}
+                          
+                          <span class="badge badge-{{$transaction->type == 2 ? 'danger':'info'}} badge-pill">{{$transaction->amount}}</span>
+                        </a>
                       @empty
                           <p class="alert alert-info text-center">You have no records yet!</p>
                       @endforelse

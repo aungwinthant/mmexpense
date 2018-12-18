@@ -4,13 +4,15 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Helper\Helper;
+use App\CurrencyExchange;
 
 class CurrencyExchangeController extends Controller
 {
     public function index(){
-        $data = (new Helper())->get_currency_data();
 
-        return view('index',compact('data'));
+        $exchange_rates=CurrencyExchange::get();
+
+        return view('index',compact('exchange_rates'));
     }
     //
 }
