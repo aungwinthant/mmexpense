@@ -5,8 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Transaction;
 use App\Category;
-use Carbon\Carbon;
-
+use App\User;
 class TransactionController extends Controller
 {
     public function __construct()
@@ -22,8 +21,16 @@ class TransactionController extends Controller
     {
         //
         $categories=Category::get();
-        $transactions= $request->user()->transactions()->whereDate('created_at',Carbon::today())->get();
-        return view('transaction.index',compact('transactions','categories'));
+        $transactions= User::getTodayTransaction($request->user());
+        $total_expense= User::getTodayExpense($request->user());
+        $total_income = User::getTodayIncome($request->user());
+        $net_total=$total_expense-$total_income;
+        $totals=[
+            'total_expense'=>$total_expense,
+            'total_income' =>$total_income,
+            'net_total' =>$net_total
+        ];
+        return view('transaction.index',compact('transactions','categories','totals'));
     }
 
     /**

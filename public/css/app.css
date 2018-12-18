@@ -10546,6 +10546,16 @@ body.fixed-nav.sidebar-toggled #content-wrapper {
   margin: 0 auto;
 }
 
+.total {
+  margin-top: 25px;
+}
+
+.total .total-text {
+  background: #2bbbad;
+  font-weight: 700;
+  color: #fff;
+}
+
 .smaller {
   font-size: 0.7rem;
 }

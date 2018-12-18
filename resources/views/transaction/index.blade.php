@@ -40,11 +40,19 @@
                       @forelse ($transactions as $transaction)
                         <a href="#!" class="list-group-item d-flex justify-content-between align-items-center list-group-item-action">{{$transaction->category->name}}
                           
-                          <span class="badge badge-{{$transaction->type == 2 ? 'danger':'info'}} badge-pill">{{$transaction->amount}}</span>
+                          <span class="badge badge-{{$transaction->type == 2 ? 'danger':'success'}} ">{{$transaction->amount}}</span>
                         </a>
                       @empty
                           <p class="alert alert-info text-center">You have no records yet!</p>
                       @endforelse
+                     
+                      <div class="total">
+                  
+                        <a href="#!" class="list-group-item d-flex justify-content-between align-items-center list-group-item-action total-text">TOTAL
+                            
+                          <span class="badge badge-info">{{trim($totals['net_total'],'-')}}</span>
+                        </a>
+                      </div>
                   </div>
                   
               </div>
