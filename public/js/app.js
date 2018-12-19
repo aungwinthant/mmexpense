@@ -13886,7 +13886,7 @@ module.exports = __webpack_require__(43);
 /* 12 */
 /***/ (function(module, exports, __webpack_require__) {
 
-
+/* WEBPACK VAR INJECTION */(function($) {
 /**
  * First we will load all of this project's JavaScript dependencies which
  * includes Vue and other libraries. It is a great starting point when
@@ -13904,13 +13904,16 @@ window.Vue = __webpack_require__(36);
  */
 
 var date = new Date();
-document.getElementById('datetext').innerHTML = date.toDateString();
+$(document).ready(function () {
+  document.getElementById('datetext').innerHTML = date.toDateString();
+});
 
 Vue.component('example-component', __webpack_require__(39));
 
 var app = new Vue({
   el: '#app'
 });
+/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(2)))
 
 /***/ }),
 /* 13 */

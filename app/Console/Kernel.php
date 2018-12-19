@@ -42,7 +42,7 @@ class Kernel extends ConsoleKernel
                 }
             }
             CurrencyExchange::insert($data);
-        })->twiceDaily(1,13);
+        })->cron('30 01,13 * * *');
     }
 
     /**

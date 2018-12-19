@@ -16,7 +16,9 @@ window.Vue = require('vue');
  */
 
  var date=new Date();
- document.getElementById('datetext').innerHTML=date.toDateString();
+ $(document).ready(function(){
+    document.getElementById('datetext').innerHTML=date.toDateString()
+ });
 
 Vue.component('example-component', require('./components/ExampleComponent.vue'));
 
