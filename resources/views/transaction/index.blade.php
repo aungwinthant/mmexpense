@@ -11,7 +11,7 @@
       <div class="navbar-nav sidebar">
         <ul >
           <li class="nav-item active">
-            <a class="nav-link" href="index.html">
+            <a class="nav-link" href="/transactions">
               <i class="fas fa-fw fa-tachometer-alt"></i>
               <span>Dashboard</span>
             </a>
@@ -43,7 +43,7 @@
                           <span class="badge badge-{{$transaction->type == 2 ? 'danger':'success'}} ">{{$transaction->amount}}</span>
                         </a>
                       @empty
-                          <p class="alert alert-info text-center">You have no records yet!</p>
+                          <p class="alert alert-info text-center">You have no records today!</p>
                       @endforelse
                      
                       <div class="total">

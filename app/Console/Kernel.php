@@ -1,11 +1,12 @@
 <?php
 
 namespace App\Console;
-use Illuminate\Support\Facades\DB;
 
 use Illuminate\Console\Scheduling\Schedule;
 use Illuminate\Foundation\Console\Kernel as ConsoleKernel;
 use App\Helper\Helper;
+use Carbon\Carbon;
+use App\CurrencyExchange;
 class Kernel extends ConsoleKernel
 {
     /**
@@ -25,15 +26,23 @@ class Kernel extends ConsoleKernel
      */
     protected function schedule(Schedule $schedule)
     {
-        $data = (new Helper())->get_currency_data();
-
+        
 
         // $schedule->command('inspire')
         //          ->hourly();
 
         $schedule->call(function(){
-            DB::table('currency_exchange')->insert($data);
-        })->daily();
+            $data = (new Helper())->get_currency_data();
+            
+            $today_rates= CurrencyExchange::whereDate('created_at',Carbon::today())->get();
+            if(!$today_rates->isEmpty()){
+                foreach ($today_rates as $rates){
+                    CurrencyExchange::destroy($rates->id);
+                    print_r('record deleted');
+                }
+            }
+            CurrencyExchange::insert($data);
+        })->twiceDaily(1,13);
     }
 
     /**
