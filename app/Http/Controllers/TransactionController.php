@@ -21,9 +21,9 @@ class TransactionController extends Controller
     {
         //
         $categories=Category::get();
-        $transactions= User::getTodayTransaction($request->user());
-        $total_expense= User::getTodayExpense($request->user());
-        $total_income = User::getTodayIncome($request->user());
+        $transactions= Transaction::getTodayTransaction($request->user());
+        $total_expense= Transaction::getTodayExpense($request->user());
+        $total_income = Transaction::getTodayIncome($request->user());
         $net_total=$total_expense-$total_income;
         $totals=[
             'total_expense'=>$total_expense,
@@ -114,6 +114,12 @@ class TransactionController extends Controller
      */
     public function destroy($id)
     {
-        //
+        $transaction=Transaction::findOrFail($id);
+        $transaction->delete();
+        return back();
+    }
+    public static function getTransactionByCategory($category_id,User $user){
+        $transactions=Transaction::getTransactionByCategory($category_id,$user);
+        return view('transaction.viewbycategory',compact('transactions'));
     }
 }

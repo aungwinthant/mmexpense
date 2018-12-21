@@ -43,6 +43,7 @@
                         @endforeach
                 </div>
             </div>
+            <a class="fab" href="/transactions"> + </a>
 @endsection
 
   

@@ -19,4 +19,5 @@ Auth::routes();
 
 Route::resource('category','CategoryController');
 
+Route::get('/transactions/category/{category}/by/{user}','TransactionController@getTransactionByCategory');
 Route::resource('transactions','TransactionController');

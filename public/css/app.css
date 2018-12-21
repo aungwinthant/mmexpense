@@ -10492,6 +10492,17 @@ body {
   margin: 0 auto;
 }
 
+.content .count {
+  color: red;
+  padding-left: 20px;
+  font-size: 18px;
+  font-weight: 700;
+}
+
+.content .badge {
+  float: right;
+}
+
 body.fixed-nav #content-wrapper {
   margin-top: 56px;
   padding-left: 90px;
@@ -10804,6 +10815,7 @@ body.fixed-nav.sidebar-toggled #content-wrapper {
           box-shadow: 0 6px 14px 0 #666;
   -webkit-transform: scale(1.05);
           transform: scale(1.05);
+  text-decoration: none;
 }
 
 @media (min-width: 100px) {

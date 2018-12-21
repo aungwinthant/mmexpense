@@ -36,23 +36,25 @@
           <div class="container-fluid">
             <div class="content">
               <div class="col col-md-12">
-                  <div class="list-group">
+                  {{-- <div class="list-group"> --}}
                       @forelse ($transactions as $transaction)
-                        <a href="#!" class="list-group-item d-flex justify-content-between align-items-center list-group-item-action">{{$transaction->category->name}}
-                          
-                          <span class="badge badge-{{$transaction->type == 2 ? 'danger':'success'}} ">{{$transaction->amount}}</span>
+                  <a href="/transactions/category/{{$transaction->category_id}}/by/{{Auth::user()->id}}" class="list-group-item align-items-center list-group-item-action">
+                                {{$transaction->category->name}}
+                                <span class="count">{{$transaction->count}}</span>
+                                <span class="badge badge-{{$transaction->type == 2 ? 'danger':'success'}} ">{{$transaction->amount}}</span>
                         </a>
+                        
                       @empty
                           <p class="alert alert-info text-center">You have no records today!</p>
                       @endforelse
                      
                       <div class="total">
                   
-                        <a href="#!" class="list-group-item d-flex justify-content-between align-items-center list-group-item-action total-text">TOTAL
+                        <button class="list-group-item align-items-center list-group-item-action total-text">TOTAL
                             
                           <span class="badge badge-info">{{trim($totals['net_total'],'-')}}</span>
-                        </a>
-                      </div>
+                        </button>
+                      {{-- </div> --}}
                   </div>
                   
               </div>

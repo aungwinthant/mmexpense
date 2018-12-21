@@ -35,7 +35,7 @@ class Kernel extends ConsoleKernel
             $data = (new Helper())->get_currency_data();
             
             $today_rates= CurrencyExchange::whereDate('created_at',Carbon::today())->get();
-            if(!$today_rates->isEmpty()){
+            if($today_rates){
                 foreach ($today_rates as $rates){
                     CurrencyExchange::destroy($rates->id);
                     print_r('record deleted');

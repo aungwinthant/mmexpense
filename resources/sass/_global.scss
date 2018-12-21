@@ -22,6 +22,15 @@ body {
 .content{
   width: 700px;
   margin:0 auto;
+    .count{
+      color:red;
+      padding-left:20px;
+      font-size: 18px;
+      font-weight: 700;
+    }
+    .badge{
+      float:right;
+    }
 }
 // Fixed Nav Option
 body.fixed-nav {
