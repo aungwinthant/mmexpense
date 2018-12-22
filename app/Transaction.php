@@ -46,5 +46,8 @@ class Transaction extends Model
                                     ->whereDate('created_at',Carbon::today())->get();
 
     }
+    public static function getTransactionHistory(User $user){
+        return $user->transactions();
+    }
     //
 }

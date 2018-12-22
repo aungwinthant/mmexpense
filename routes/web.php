@@ -11,7 +11,9 @@
 |
 */
 
-Route::get('/', 'CurrencyExchangeController@index');
+Route::get('/', function(){
+    return view('index');
+});
 
 
 
@@ -19,5 +21,8 @@ Auth::routes();
 
 Route::resource('category','CategoryController');
 
+Route::get('transactions/by/{user}','TransactionController@getTransactionHistory')->name('history');
 Route::get('/transactions/category/{category}/by/{user}','TransactionController@getTransactionByCategory');
 Route::resource('transactions','TransactionController');
+
+Route::get('currency_exchange','CurrencyExchangeController@index')->name('currency_exchange');

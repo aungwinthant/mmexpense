@@ -7,7 +7,53 @@ html {
 
 body {
   height: 100%;
+  .bg-black {
+    background-color: $black !important;
+  }
+  
 
+}
+header.masthead {
+  position: relative;
+  overflow: hidden;
+  padding-top: calc(7rem + 72px);
+  padding-bottom: 7rem;
+  background: linear-gradient(0deg, #4783b9 0%, #4ba598 100%);
+  background-repeat: no-repeat;
+  background-position: center center;
+  background-attachment: scroll;
+  background-size: cover;
+  .masthead-content {
+    z-index: 1;
+    position: relative;
+    .masthead-heading {
+      font-size: 4rem;
+    }
+    .masthead-subheading {
+      font-size: 2rem;
+    }
+  }
+  .btn-xl {
+    text-transform: uppercase;
+    padding: 1.5rem 3rem;
+    font-size: 0.9rem;
+    font-weight: 700;
+    letter-spacing: 0.1rem;
+  }
+  
+  .bg-black {
+    background-color: $black !important;
+  }
+  
+  .rounded-pill {
+    border-radius: 5rem;
+  }
+  
+}
+section{
+  .info-header{
+    font-weight: 800 !important;
+  }
 }
 
 

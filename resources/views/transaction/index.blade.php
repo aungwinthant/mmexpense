@@ -18,14 +18,14 @@
           </li>
           
           <li class="nav-item">
-            <a class="nav-link" href="#">
+          <a class="nav-link" href="{{route('history',Auth::user()->id)}}">
               <i class="fas fa-fw fa-chart-area"></i>
-              <span>Charts</span></a>
+              <span>History</span></a>
           </li>
           <li class="nav-item">
-            <a class="nav-link" href="#">
+            <a class="nav-link" href="/currency_exchange">
               <i class="fas fa-fw fa-table"></i>
-              <span>Tables</span></a>
+              <span>Exchange Rates</span></a>
           </li>
         </ul>
       </div>
@@ -38,11 +38,11 @@
               <div class="col col-md-12">
                   {{-- <div class="list-group"> --}}
                       @forelse ($transactions as $transaction)
-                  <a href="/transactions/category/{{$transaction->category_id}}/by/{{Auth::user()->id}}" class="list-group-item align-items-center list-group-item-action">
-                                {{$transaction->category->name}}
-                                <span class="count">{{$transaction->count}}</span>
-                                <span class="badge badge-{{$transaction->type == 2 ? 'danger':'success'}} ">{{$transaction->amount}}</span>
-                        </a>
+                          <a href="/transactions/category/{{$transaction->category_id}}/by/{{Auth::user()->id}}" class="list-group-item align-items-center list-group-item-action">
+                                  {{$transaction->category->name}}
+                                  <span class="count">{{$transaction->count}}</span>
+                                  <span class="badge badge-{{$transaction->type == 2 ? 'danger':'success'}} ">{{$transaction->amount}}</span>
+                          </a>
                         
                       @empty
                           <p class="alert alert-info text-center">You have no records today!</p>
@@ -118,6 +118,8 @@
         <!-- /.content-wrapper -->
   
       </div>
+
+@include('layouts.footer')
 
 @endsection
 

@@ -42,4 +42,19 @@
     .content{
         width:700px;
     }
+}
+@media (min-width: 992px) {
+    header.masthead {
+      padding-top: calc(10rem + 55px);
+      padding-bottom: 10rem;
+      .masthead-content {
+        .masthead-heading {
+          font-size: 4rem;
+        }
+        .masthead-subheading {
+          font-size: 2rem;
+          padding-top:20px;
+        }
+      }
   }
+}

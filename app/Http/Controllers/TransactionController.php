@@ -122,4 +122,8 @@ class TransactionController extends Controller
         $transactions=Transaction::getTransactionByCategory($category_id,$user);
         return view('transaction.viewbycategory',compact('transactions'));
     }
+    public static function getTransactionHistory(User $user){
+        $transactions=Transaction::getTransactionHistory($user)->paginate(10);
+        return view('transaction.transactionhistory',compact('transactions'));
+    }
 }

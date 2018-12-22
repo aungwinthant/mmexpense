@@ -11,34 +11,31 @@
                 <div class="card-body">
               
                   <!-- Title -->
-                  <h4 class="card-title">Transaction Details</h4>
+                  <h4 class="card-title">Transaction History</h4>
                   <table class="table table-bordered table-responsive-md table-striped text-center">
                         <tbody>
                             <tr class="table-info">
                             
                                     <td>Time</td>
+                                    <td>Category</td>
                                     <td>Description</td>
                                     <td>Amount</td>
-                                    <td></td>
+                                    
                                     
                             </tr>
                             @foreach ($transactions as $transaction)
                             <tr>
                                     <td class="pt-3-half">{{ $transaction->created_at }}</td> 
+                                    <td class="pt-3-half">{{ $transaction->category->name }}</td> 
                                     <td class="pt-3-half">{{ $transaction->description }}</td> 
                                     <td class="pt-3-half">{{ $transaction->amount }}</td>
-                                    <td >
-                                        <form method="POST" action="{{ route('transactions.destroy',$transaction->id) }}">
-                                           @method('DELETE')
-                                           @csrf
-                                              <button type="submit" class="btn btn-danger btn-sm my-0">Delete</button>
-                                        </form>
-                                    </td>
+                                    
                             </tr>
                             @endforeach
                            
                             
                         </tbody>
+                        {{ $transactions->links() }}
                     </table>
                 </div>
                
