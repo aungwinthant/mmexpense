@@ -49,5 +49,4 @@
 <!-- Card -->
 @include('layouts.footer')
 
-
 @endsection
