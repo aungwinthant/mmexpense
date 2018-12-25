@@ -52,21 +52,22 @@ class TransactionController extends Controller
      */
     public function store(Request $request)
     {
+
         $validate_data=$this->validate($request,[
             'amount' => 'required|numeric',
             'category_id'=> 'required|numeric',
-            'description' => 'required|max:255'
+            'description' => 'required|min:1|max:255',
+            'expenseincome'=>'required'
         ]);
-        if(request('income')){
-            $validate_data['type']=1;
+        if(request('expenseincome')=="income"){
+            $validate_data['type']=1;//income
         }
-        elseif(request('expense')){
-            $validate_data['type']=2;
+        elseif(request('expenseincome')=="expense"){
+            $validate_data['type']=2;//expense
         }
         $transaction = $request->user()->transactions()->create(
             $validate_data
         );
-        
         
         return redirect('/transactions');
         //

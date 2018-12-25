@@ -31,6 +31,15 @@
       </div>
   
         <div id="content-wrapper">
+            @if ($errors->any())
+            <div class="alert alert-danger">
+                <ul>
+                    @foreach ($errors->all() as $error)
+                        <li>{{ $error }}</li>
+                    @endforeach
+                </ul>
+            </div>
+          @endif
           <div class="date"><h3 id="datetext"></h3></div>
         
           <div class="container-fluid">
@@ -85,24 +94,24 @@
                             </select>
                           </div>
                           <div class="form-group md-form">
-                          <input type="text" class="form-control {{ $errors->has('name') ? ' is-invalid' : '' }} " id="description" name = "description" placeholder="Description" value="{{ old('description') }}">
+                          <input type="text" class="form-control {{ $errors->has('description') ? ' is-invalid' : '' }} " id="description" name = "description" placeholder="Description" value="{{ old('description') }}">
                           </div>
                           
                           <div class="custom-control custom-radio custom-control-inline">
-                              <input type="radio" class="custom-control-input" id="expense" name="expense">
+                              <input type="radio" class="custom-control-input" id="expense" name="expenseincome" value="expense" checked>
                               <label class="custom-control-label" for="expense">Expense</label>
                           </div>
                             
                             <!-- Default inline 2-->
                           <div class="custom-control custom-radio custom-control-inline">
-                            <input type="radio" class="custom-control-input" id="income" name="income">
+                            <input type="radio" class="custom-control-input" id="income" name="expenseincome" value="income">
                             <label class="custom-control-label" for="income">Income</label>
                           </div>
                           <hr>
                           <div class="text-center">
                             <button type="submit" class="btn btn-default">Save</button>
                           </div>
-                        </form>
+                        </form>                       
                   </div>
         
                     
@@ -116,7 +125,7 @@
   
         </div>
         <!-- /.content-wrapper -->
-  
+       
       </div>
 
 @endsection

@@ -42,6 +42,8 @@
                         
                         @endforeach
                 </div>
+                <a class="btn btn-info btn-md" href="/transactions">Go Back</a>
+
             </div>
 
             @include('layouts.footer')

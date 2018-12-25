@@ -8,7 +8,7 @@
 <header class="masthead text-center text-white">
     <div class="masthead-content">
       <div class="container">
-        <h1 class="masthead-heading mb-0">MMExpense</h1>
+        <h1 class="masthead-heading mb-0">MMEXPENSE</h1>
         <h2 class="masthead-subheading mb-0">Your Personal expense tracking website</h2>
         <a href="/transactions" class="btn btn-primary btn-xl rounded-pill mt-5">Start Tracking Now</a>
       </div>
@@ -59,7 +59,7 @@
       <div class="col-lg-6 order-lg-1">
         <div class="p-5">
           <h2 class="display-4 info-header">Wherever you go!</h2>
-          <p>Unless you are in a cave or in a remote area.</p>
+          <p>Unless you are in a cave or on an island.</p>
         </div>
       </div>
     </div>
