@@ -30,7 +30,7 @@
                         <a  class="nav-link" href="/transactions" class="dropdown-item">Dashboard</a>
                     </li>
                     <li class="nav-item">
-                        <a  class="nav-link" href="{{route('history',Auth::user()->id)}}" class="dropdown-item">History</a>
+                        <a  class="nav-link" href="{{route('history')}}" class="dropdown-item">History</a>
                     </li>
                     <li class="nav-item">
                         <a  class="nav-link" href="{{route('currency_exchange')}}" class="dropdown-item">Currency Exchange</a>
