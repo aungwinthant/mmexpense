@@ -18,7 +18,7 @@
           </li>
           
           <li class="nav-item">
-          <a class="nav-link" href="{{route('history',Auth::user()->id)}}">
+          <a class="nav-link" href="{{route('history')}}">
               <i class="fas fa-fw fa-chart-area"></i>
               <span>History</span></a>
           </li>
@@ -47,7 +47,7 @@
               <div class="col col-md-12">
                   {{-- <div class="list-group"> --}}
                       @forelse ($transactions as $transaction)
-                          <a href="/transactions/category/{{$transaction->category_id}}/by/{{Auth::user()->id}}" class="list-group-item align-items-center list-group-item-action">
+                          <a href="/transactions/category/{{$transaction->category_id}}" class="list-group-item align-items-center list-group-item-action">
                                   {{$transaction->category->name}}
                                   <span class="count">{{$transaction->count}}</span>
                                   <span class="badge badge-{{$transaction->type == 2 ? 'danger':'success'}} ">{{$transaction->amount}}</span>
