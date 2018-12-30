@@ -4,7 +4,7 @@ namespace App\Console;
 
 use Illuminate\Console\Scheduling\Schedule;
 use Illuminate\Foundation\Console\Kernel as ConsoleKernel;
-use App\Helper\Helper;
+use App\CurrencyCrawler\CurrencyCrawler;
 use Carbon\Carbon;
 use App\CurrencyExchange;
 class Kernel extends ConsoleKernel
@@ -32,7 +32,7 @@ class Kernel extends ConsoleKernel
         //          ->hourly();
 
         $schedule->call(function(){
-            $data = (new Helper())->get_currency_data();
+            $data = (new CurrencyCrawler())->get_currency_data();
             
             $today_rates= CurrencyExchange::whereDate('created_at',Carbon::today())->get();
             if($today_rates){

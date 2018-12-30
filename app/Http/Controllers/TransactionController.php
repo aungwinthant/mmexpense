@@ -17,13 +17,13 @@ class TransactionController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index(Request $request)
+    public function index()
     {
         //
         $categories=Category::get();
-        $transactions= Transaction::getTodayTransaction($request->user());
-        $total_expense= Transaction::getTodayExpense($request->user());
-        $total_income = Transaction::getTodayIncome($request->user());
+        $transactions= auth()->user()->getTransactionByDate();
+        $total_expense= auth()->user()->getTodayExpense();
+        $total_income = auth()->user()->getTodayIncome();
         $net_total=$total_expense-$total_income;
         $totals=[
             'total_expense'=>$total_expense,
@@ -54,7 +54,7 @@ class TransactionController extends Controller
     {
 
         $validate_data=$this->validate($request,[
-            'amount' => 'required|numeric',
+            'amount' => 'required|numeric|min:100|digits_between: 0,9',
             'category_id'=> 'required|numeric',
             'description' => 'required|min:1|max:255',
             'expenseincome'=>'required'
@@ -65,7 +65,7 @@ class TransactionController extends Controller
         elseif(request('expenseincome')=="expense"){
             $validate_data['type']=2;//expense
         }
-        $transaction = $request->user()->transactions()->create(
+        $transaction = auth()->user()->transactions()->create(
             $validate_data
         );
         
@@ -116,15 +116,34 @@ class TransactionController extends Controller
     public function destroy($id)
     {
         $transaction=Transaction::findOrFail($id);
+
+        $this->authorize('update',$transaction);
+
         $transaction->delete();
-        return back();
+        return redirect('/transactions');
     }
-    public static function getTransactionByCategory($category_id,User $user){
-        $transactions=Transaction::getTransactionByCategory($category_id,$user);
+    
+    public function getTransactionByCategory($category_id){
+        $transactions=auth()->user()->getTransactionByCategory($category_id);
+        //authorizations before passing views
+        $this->authorizeTransactions($transactions);
+       
         return view('transaction.viewbycategory',compact('transactions'));
     }
-    public static function getTransactionHistory(User $user){
-        $transactions=Transaction::getTransactionHistory($user)->paginate(10);
+    public function getTransactionHistory(){
+        $transactions=auth()->user()->getTransactionHistory()->paginate(10);
+
+        $this->authorizeTransactions($transactions);
+
         return view('transaction.transactionhistory',compact('transactions'));
+    }
+    public function authorizeTransactions($transactions){
+        
+        if($transactions->isEmpty()){
+            abort(404);
+        }
+        foreach ($transactions as $transaction) {
+            $this->authorize('update',$transaction);
+        }
     }
 }

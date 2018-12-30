@@ -1,8 +1,8 @@
 <?php
 
-namespace App\Helper;
+namespace App\CurrencyCrawler;
 
-class Helper{
+class CurrencyCrawler{
 
     protected $data=[];
     protected $aya_url="https://www.ayabank.com/en_US";
