@@ -32,14 +32,8 @@
   
         <div id="content-wrapper">
             @if ($errors->any())
-            <div class="alert alert-danger">
-                <ul>
-                    @foreach ($errors->all() as $error)
-                        <li>{{ $error }}</li>
-                    @endforeach
-                </ul>
-            </div>
-          @endif
+              @include('layouts.errors')
+            @endif
           <div class="date"><h3 id="datetext"></h3></div>
         
           <div class="container-fluid">

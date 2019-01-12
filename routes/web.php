@@ -21,8 +21,13 @@ Auth::routes();
 
 Route::resource('category','CategoryController');
 
+//transactions
 Route::get('transactions/history','TransactionController@getTransactionHistory')->name('history');
 Route::get('/transactions/category/{category}/','TransactionController@getTransactionByCategory');
 Route::resource('transactions','TransactionController');
-
+//currency_exchange
 Route::get('currency_exchange','CurrencyExchangeController@index')->name('currency_exchange');
+
+//users
+Route::get('users/{user}','UserController@show');
+Route::post('users','UserController@update');
